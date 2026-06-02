@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub Kościński | Portfolio Graficzne</title>
+    
+    <!-- Nowoczesna, czysta czcionka Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent-color: #3b82f6;
+            /* Efekt matowego szkła (Glassmorphism) */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.12), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.12), transparent 25%);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* SEKCJA O MNIE (HEADER) */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0 5rem 0;
+            gap: 2rem;
+        }
+
+        .profile-photo {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background-color: #1e293b; 
+        }
+
+        .about-glass-panel {
+            max-width: 750px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        h2.subtitle {
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-glass-panel p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* SEKCJA PORTFOLIO */
+        .section-title {
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background-color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .project-info {
+            padding: 1.8rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* STOPKA */
+        footer {
+            margin-top: 6rem;
+            padding: 3rem 0;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-links {
+                flex-direction: column;
+                gap: 1.2rem;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- SEKCJA HEADER (O MNIE) -->
+        <header>
+            <!-- Główne zdjęcie profilowe -->
+            <img src="2.jpeg" alt="Jakub Kościński" class="profile-photo">
+            
+            <div class="about-glass-panel">
+                <h1>Cześć, jestem Jakub.</h1>
+                <h2 class="subtitle">Digital Designer & Grafik</h2>
+                <p>
+                    Od 6 lat zajmuję się projektowaniem graficznym. Wykonałem ponad 400 projektów dla firm i indywidualnych klientów. Specjalizuję się w nowoczesnym, przejrzystym designie, tworząc kreacje, które przyciągają oko i realnie wspierają działania biznesowe. 
+                </p>
+            </div>
+        </header>
+
+        <!-- SEKCJA PORTFOLIO -->
+        <h2 class="section-title">Projekty Graficzne</h2>
+
+        <section class="portfolio-grid">
+            
+            <!-- PROJEKT 1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="1.jpg" alt="Cere Scrypt">
+                    [Miejsce na grafikę: Cere Scrypt]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Venezia – Restauracja Włoska</div>
+                    <div class="project-desc">Projekt logotypu i minimalistycznej identyfikacji wizualnej.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="2.png" alt="Uniwersytet Warszawski">
+                    [Miejsce na grafikę: Uniwersytet Warszawski]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Kolekcja zeszytów</div>
+                    <div class="project-desc">Kreatywne projekty okładek z wykorzystaniem nowoczesnych wzorów.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="3.jpg" alt="WarsawIce">
+                    [Miejsce na grafikę: WarsawIce]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Kieruj się w Kosmos</div>
+                    <div class="project-desc">Key visual i grafika promująca oryginalny podcast dla Empik Go.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 4 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="2.jpg" alt="Projekt 4">
+                    [Miejsce na grafikę: Projekt 4]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Koneser Miodu</div>
+                    <div class="project-desc">Branding i projekt opakowań dla produktów premium.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 5 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="5.png" alt="Projekt 5">
+                    [Miejsce na grafikę: Projekt 5]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Kyana – Kampania 360</div>
+                    <div class="project-desc">Spójna komunikacja wizualna obejmująca DTP oraz profil na Instagramie.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 6 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="7.png" alt="Projekt 6">
+                    [Miejsce na grafikę: Projekt 6]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Kyana – Katalog produktowy</div>
+                    <div class="project-desc">Projekt layoutu i pełny skład eleganckiego katalogu dla branży beauty.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 7 -->
+            <div class="project-card">
+                <div class="project-image">
+                   <img src="6.png" alt="Projekt 7">
+                    [Miejsce na grafikę: Projekt 7]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Plakat artystyczny</div>
+                    <div class="project-desc">Minimalistyczny, czarno-biały plakat z wyrazistym, czerwonym akcentem.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 8 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="8.png" alt="Projekt 8">
+                    [Miejsce na grafikę: Projekt 8]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Rexus – Artykuły szkolne</div>
+                    <div class="project-desc">Projekt okładek do bloków technicznych z wykorzystaniem autorskich ilustracji.</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 9 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="9.png" alt="Projekt 9">
+                    [Miejsce na grafikę: Projekt 9]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Promocja kosmetyków</div>
+                    <div class="project-desc">Estetyczne grafiki produktowe do kampanii w mediach społecznościowych (Hebe).</div>
+                </div>
+            </div>
+
+            <!-- PROJEKT 10 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="10.png" alt="Projekt 10">
+                    [Miejsce na grafikę: Projekt 10]
+                </div>
+                <div class="project-info">
+                    <div class="project-title">CzteryOczy.pl – Social Media</div>
+                    <div class="project-desc">Cykl spójnych wizualnie, edukacyjnych postów na Instagram dla salonu optycznego.</div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- STOPKA -->
+    <footer>
+        <h2 style="font-weight: 600; font-size: 1.5rem;">Zróbmy razem świetny projekt</h2>
+        <div class="contact-links">
+            <a href="mailto:kubawik11@gmail.com">✉️ kubawik11@gmail.com</a>
+            <a href="tel:+48695175164">📞 695 175 164</a>
+        </div>
+        <p style="margin-top: 2.5rem; color: #475569; font-size: 0.85rem;">
+            &copy; 2026 Jakub Kościński. Wszelkie prawa zastrzeżone.
+        </p>
+    </footer>
+
+</body>
+</html>
